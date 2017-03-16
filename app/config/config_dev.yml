@@ -1,0 +1,52 @@
+imports:
+    - { resource: config.yml }
+
+framework:
+    router:
+        resource: '%kernel.root_dir%/config/routing_dev.yml'
+        strict_requirements: true
+    profiler: { only_exceptions: false }
+
+web_profiler:
+    toolbar: true
+    intercept_redirects: false
+
+monolog:
+    handlers:
+        main:
+            type: stream
+            path: '%kernel.logs_dir%/%kernel.environment%.log'
+            level: debug
+            channels: ['!event']
+        console:
+            type: console
+            channels: ['!event', '!doctrine']
+        # uncomment to get logging in your browser
+        # you may have to allow bigger header sizes in your Web server configuration
+        #firephp:
+        #    type: firephp
+        #    level: info
+        #chromephp:
+        #    type: chromephp
+        #    level: info
+
+#swiftmailer:
+#    delivery_addresses: ['me@example.com']
+
+
+#doctrine:
+#    dbal:
+#        driver:   pdo_mysql
+#        host:     '%database_host%'
+#        dbname:   '%database_name%'
+#        user:     '%database_user%'
+#        password: '%database_password%'
+
+parameters:
+    law_urls:
+#        - "http://njt.hu/cgi_bin/njt_doc.cgi?docid=140968"
+#        - "http://njt.hu/cgi_bin/njt_doc.cgi?docid=159096"
+#        - "http://njt.hu/cgi_bin/njt_doc.cgi?docid=193687"
+        - "http://ado.hu/rovatok/ado/szja-bevallas-iden-igy-kell-csinalni"
+        - "http://ado.hu/rovatok/tb-nyugdij/jol-ment-a-nyugdijpenztaraknak"
+        - "http://ado.hu/rovatok/cegvilag/fogyasztovedelem-celkeresztben-az-e-kereskedelem"
