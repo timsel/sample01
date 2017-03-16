@@ -39,12 +39,23 @@ class ParseCommand extends ContainerAwareCommand
     }
 
     /**
+     * Setup entity manager for class
+     * 
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
+    protected function initialize(InputInterface $input, OutputInterface $output)
+    {
+        $this->em = $this->getContainer()->get('doctrine')->getManager();
+    }
+
+
+    /**
      * {@inheritdoc}
      */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->output = $output;
-        $this->em = $this->getContainer()->get('doctrine')->getManager();
 
         $this->processLaws();
         $this->processWords();
