@@ -65,10 +65,15 @@ Telepítés folyamata:
 - a tesztelhető url-ek, amikről GET-el lehet adatot lekérni:
 
 http://127.0.0.1:8000/allwords
+
 http://127.0.0.1:8000/searchlawsbyword/{keresendő szó}
+
 http://127.0.0.1:8000/searchwordsbylaw/{jogszabályszöveg ID}
+
 http://127.0.0.1:8000/top10
+
 - a unittesztek a ./vendor/bin/simple-phpunit paranccsal futtathatóak
+
 
 Néhány megjegyzés ("ezeket amúgy máshogy csinálnám" :) :
 - A repository-ban query-ket használtam, ezek helyett szebb lett volna querybuilder-t alkalmazni (ill. valószínűleg az ORM annotációkkal is meg lehetett volna oldani a feladatot)
