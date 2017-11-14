@@ -48,3 +48,32 @@ A válaszok JSON formátumban érkezzenek.
 Feladat-3
 ---------
 Írjon a Feladat-2 ben meghatározott interfészek közül legalább kettőhöz automata tesztet.
+
+
+
+Válasz, megjegyzések, todo-k
+----------------------------
+Telepítés folyamata:
+- a .zip kibontása után composer install paranccsal lehet feltelepíteni a környezetet a program számára (symfony, phpunit, stb).
+- az adatbázis hozzáférések a config/parameters.yml file-ban állíthatóak be (mysql-el teszteltem)
+- a lekérdezni kívánt url-ek listája a config/config_dev.yml file parameters.law_urls paraméterében állíthatóak be
+- a hozzáférések beállítása után a php bin/console doctrine:database:create paranccsal lehet létrehozni az adatbázist
+- a php bin/console doctrine:schema:update --force paranccsal pedig a táblákat
+- a szótár összeállítását az /src/AppBundle/Command/ParseCommand.php file indításával lehet kezdeményezni (parancs: php bin/console app:parse -v)
+- a REST funkciók teszteléséhez nem szükséges apache, a php bin/console server:run paranccsal elindítható a php beépített webszervere
+- a REST funkciókat az src/AppBundle/DefaultController.php tartalmazza
+- a tesztelhető url-ek, amikről GET-el lehet adatot lekérni:
+http://127.0.0.1:8000/allwords
+http://127.0.0.1:8000/searchlawsbyword/{keresendő szó}
+http://127.0.0.1:8000/searchwordsbylaw/{jogszabályszöveg ID}
+http://127.0.0.1:8000/top10
+- a unittesztek a ./vendor/bin/simple-phpunit paranccsal futtathatóak
+
+Néhány megjegyzés ("ezeket amúgy máshogy csinálnám" :) :
+- A repository-ban query-ket használtam, ezek helyett szebb lett volna querybuilder-t alkalmazni (ill. valószínűleg az ORM annotációkkal is meg lehetett volna oldani a feladatot)
+- a html file-ok parse-olását a command-ban rövidre zártam; nyilván, ha egy adott site-ról kell adatot lekérnem, jobban testreszabható a dolog
+- a unittesztek az adatbázisban található adatok alapján dolgoznak; ez nem szép megoldás, a pontos tesztelés érdekében előre meghatározott értékkészlettel kellene dolgozniuk
+- a teljes CRUD működést is érdemes lehet a REST API-n keresztül megvalósítani, akár jogosultságok kezelésével (oauth, stb).
+- a routing bejegyzéseket érdemesebb kivezetni külön config file-ba
+- ha "szabad kezet kapok", valószínűleg nem mysql-el kerestem volna, hanem valamilyen full-text search engine-el (pl.: elasticsearch)
+
