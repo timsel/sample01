@@ -63,6 +63,7 @@ Telepítés folyamata:
 - a REST funkciók teszteléséhez nem szükséges apache, a php bin/console server:run paranccsal elindítható a php beépített webszervere
 - a REST funkciókat az src/AppBundle/DefaultController.php tartalmazza
 - a tesztelhető url-ek, amikről GET-el lehet adatot lekérni:
+
 http://127.0.0.1:8000/allwords
 http://127.0.0.1:8000/searchlawsbyword/{keresendő szó}
 http://127.0.0.1:8000/searchwordsbylaw/{jogszabályszöveg ID}
